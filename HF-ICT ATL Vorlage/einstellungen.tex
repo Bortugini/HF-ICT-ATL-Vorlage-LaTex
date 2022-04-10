@@ -1,0 +1,109 @@
+% Vorlage für Abschlussarbeiten
+% Hier werden allgemeine Einstellungen festgelegt
+
+\documentclass[%
+	a4paper,%							A4 Papier
+	oneside,%	einseitig (linker und rechter Seitenrand sind gleich groß)
+	bibliography=totoc,%	Literaturverzeichnis nummeriert mit ins Inhaltsverzeichnis einfügen
+	%listof=totoc,%				Abbildungs- und Tabellenverzeichnis ins Inhaltsverzeichnis einfügen
+	numbers=noenddot,%		hinter der Gliederungsnummer soll kein Punkt gesetzt werden (siehe Duden)
+	parskip=half,%				europäischer Satz mit Abstand zwischen Absätzen
+]{scrartcl}
+
+% ---- Metadaten ----
+% Titel der Arbeit
+\title{Title der Arbeit}	
+% Autor
+\author{Vorname Name}		
+% Datum
+\date{\today}	         
+% Datei Name
+\newcommand{\name}{Dokument.pdf}
+% Name Dozent
+\newcommand{\dozent}{Name}
+% Abgabedatum
+\newcommand{\abgabedatum}{15.12.2021}
+% Kopieren den Titel und den Autor zur Verwendung in der Kopf- und Fußzeile.
+\makeatletter
+	\let\runauthor\@author
+	\let\runtitle\@title
+\makeatother
+
+% ---- Packages ----
+
+% --- Font ---
+% Eingabecodierung, deutsche Umlaute oder die akzentuierten Zeichen sind verfügbar 
+% und können direkt eingegeben werden
+% siehe auch http://de.wikipedia.org/wiki/UTF8
+\usepackage[utf8]{inputenc}			
+% Ausgabeschriftart von LaTeX festlegen
+% siehe auch http://de.wikibooks.org/wiki/LaTeX-Schnellkurs:_Erste_Schritte
+\usepackage[T1]{fontenc}					
+% Schriftart
+\usepackage[scaled]{helvet}
+% Text Symbole
+\usepackage{textcomp}	
+
+% --- Language ---
+% Paket für Deutsche Sprache (Übersetzungen von Chapter zu Kapitel, 
+% richtige Umlaute, richtige % Silbentrennung)
+% siehe auch http://de.wikipedia.org/wiki/Babel-System
+\usepackage[english,ngerman]{babel}
+\usepackage[ngerman, num]{isodate}
+% Entferne Absatzeinzug 
+\usepackage{parskip}
+
+% --- Last Page ---
+% Erweitert die Befehle mit \pageref{LastPage}.
+\usepackage{lastpage} 						
+
+% --- Layout ---
+\usepackage{geometry} 							
+\usepackage{fancyhdr} 						
+\usepackage{graphicx}	
+
+% --- Mindmap ---
+\usepackage{tikz}								
+\usetikzlibrary{mindmap}
+
+\usepackage{lscape}
+
+% --- Debug ---
+% Segmente anzeigen
+%\usepackage{showframe}					
+
+% ---- Style ----
+\geometry{
+    % Legt einen Rand oben fest.
+	tmargin=25mm,							
+	% Legt einen Rand unten fest.
+	bmargin=25mm,							
+    % Legt einen Rand links vom Inhalt fest.
+	lmargin=30mm,		
+	% Legt einen Rand rechts vom Inhalt fest.
+	rmargin=20mm,						
+	headheight=34.78244pt
+}
+% Römisch Arabisch Aufzählung wechseln
+\newcommand{\sectionnumbering}[1]{%
+\setcounter{section}{0}%
+\renewcommand{\thesection}{\csname #1\endcsname{section}}}
+% Blendet die oberste Linie aus.
+\renewcommand{\headrulewidth}{0pt}
+% Blendet die Untere Linie aus.
+\renewcommand{\footrulewidth}{0pt}	
+% Setzt die Standardschriftfamilie auf eine sans serif
+\renewcommand\familydefault{\sfdefault}	
+% Path zu den Bildern
+\graphicspath{{./img/}} 
+
+% Kopf und Fusszeilen Format
+\pagestyle{fancy}							
+\fancyhf{}					
+% Logo im Header					
+\rhead{\includegraphics[width=2cm]{logo}}		 
+\lhead{\fontsize{8}{10} \selectfont \runtitle}	
+\cfoot{\fontsize{8}{10} \selectfont \runauthor}	
+\lfoot{\fontsize{8}{10} \selectfont \today}	
+\rfoot{\fontsize{8}{10} \selectfont Seite \thepage\ von \pageref{LastPage}}
+% Ende der Datei

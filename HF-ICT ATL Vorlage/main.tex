@@ -1,0 +1,37 @@
+% Vorlage für Abschlussarbeiten
+%
+% Das ist das zentrale Dokument.
+%-------------------------------------------------------- allgemeine Einstellungen --------------------------------------------------------
+\input{einstellungen}
+
+\begin{document}                    
+%--------------------------------------------------------------- Titelseite ---------------------------------------------------------------
+\include{kapitel/tittelseite}
+
+%--------------------------------------------------------------- Vorspann -----------------------------------------------------------------
+% Römische Nummerierung
+%\renewcommand \thesection {\Roman{section})}
+
+\pagenumbering{arabic}
+\sectionnumbering{Roman}
+\pagestyle{fancy}
+\include{kapitel/erklärung}
+%------------------------------------------------------------ Verzeichnisse ---------------------------------------------------------------
+\tableofcontents 
+\pagebreak
+
+%---------------------------------------------------------------- Inhalt ------------------------------------------------------------------
+% Counter wider auf 0 setzen damit die Kapitel wider bei 1 beginnen
+\setcounter{section}{0}
+\sectionnumbering{arabic}
+% Arabische Nummerierung
+%\renewcommand \thesection {\arabic{section})}
+\include{kapitel/einleitung}
+\include{kapitel/hauptteil}
+
+%----------------------------------------------------------------- Anhang -----------------------------------------------------------------
+\appendix
+\include{kapitel/anhang}
+
+\end{document}						
+% Ende der Datei
